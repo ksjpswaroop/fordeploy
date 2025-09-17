@@ -1,0 +1,77 @@
+name: recruitment-backend-api
+services:
+- name: api
+  source_dir: /
+  github:
+    repo: your-username/your-repo-name
+    branch: main
+  dockerfile_path: Dockerfile.backend
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  http_port: 8000
+  routes:
+  - path: /
+  health_check:
+    http_path: /health
+    initial_delay_seconds: 30
+    period_seconds: 10
+    timeout_seconds: 5
+    success_threshold: 1
+    failure_threshold: 3
+  envs:
+  - key: DATABASE_URL
+    value: sqlite:///./recruitment_mvp.db
+  - key: DEBUG
+    value: "False"
+  - key: HOST
+    value: "0.0.0.0"
+  - key: PORT
+    value: "8000"
+  - key: APP_NAME
+    value: "AI-Driven Recruitment API"
+  - key: APP_VERSION
+    value: "1.0.0"
+  # SendGrid Configuration
+  - key: SENDGRID_API_KEY
+    value: "your-sendgrid-api-key"
+    type: SECRET
+  - key: SENDGRID_FROM_EMAIL
+    value: "your-verified-email@domain.com"
+  - key: SENDGRID_FROM_NAME
+    value: "Your Name"
+  - key: SENDGRID_SANDBOX
+    value: "false"
+  # AI API Keys
+  - key: OPENAI_API_KEY
+    value: "your-openai-api-key"
+    type: SECRET
+  - key: ANTHROPIC_API_KEY
+    value: "your-anthropic-api-key"
+    type: SECRET
+  # Apify Configuration
+  - key: APIFY_API_TOKEN
+    value: "your-apify-token"
+    type: SECRET
+  # Authentication
+  - key: CLERK_SECRET_KEY
+    value: "your-clerk-secret-key"
+    type: SECRET
+  # Base URL for webhooks and callbacks
+  - key: BASE_URL
+    value: "https://recruitment-backend-api-your-hash.ondigitalocean.app"
+
+# Optional: Add a database service
+# databases:
+# - name: recruitment-db
+#   engine: PG
+#   version: "15"
+#   size: db-s-1vcpu-1gb
+#   num_nodes: 1
+
+# Optional: Add a worker service for background tasks
+# workers:
+# - name: background-worker
+#   source_dir: /
+#   dockerfile_path: Dockerfile.worker
+#   instance_count: 1
+#   instance_size_slug: basic-xxs
