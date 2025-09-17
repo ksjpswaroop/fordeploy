@@ -1,0 +1,135 @@
+# Database Configuration (aligned with alembic.ini)
+DATABASE_URL=sqlite:///./recruitment_mvp.db
+
+# Apify Configuration
+APIFY_TOKEN=apify_api_XK5ZNVJS4yF573a6FziuQAAbBc4eqh1G9QMs 
+
+# Data Enrichment APIs
+APOLLO_API_KEY=CLRwRRqAMqE5L1lZTn6NdA
+HUNTER_API_KEY=b1292c23159ad2ade0ed296fc222eba0d43b9cb9
+
+# AI/OpenAI Configuration
+OPENAI_API_KEY=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
+## Clerk JWT public key (escaped single-line to avoid dotenv parse errors)
+CLERK_JWT_SECRET="-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvZKKXd5xz5cpEfF6tDl/\ndN9Zam/cQS6CK7O7sQt27+3Drv5gyCIr7VxgiQGHvJF3o13aiYGyXhndM3OPeXC7\nsICy6NXzCEDRBwbhwQ1aoGL/M2RksAgpJK/qrOiAmt9TG9twlWZzEW5Lh2DB+voN\nvU0sW4vVpUa5EjiYYppUgDaRYMyKwo2ig+kDlEBoXDCt8obm+95RgExdxtArgzmQ\n1G/ZXGon0m89lJwORXIH7zZmEpXoI1AY6r4nmVZZoy8v2havZ7bBXFDVPefqE2T4\nJexP5QQj683XnI9j65R26ty3wJK4lMWeZ9tLPlSkyV86lOCCM8iTqcixra3FESes\nvwIDAQAB\n-----END PUBLIC KEY-----"
+
+## (Optional) If you prefer base64: run `base64 -b 0 clerk_jwt_public.pem` and set CLERK_JWT_SECRET_BASE64 instead.
+# Email Configuration
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password_here
+FROM_NAME=Your Name
+FROM_EMAIL=your_email@gmail.com
+
+# Application Settings
+APP_NAME=Apify Job Automation
+APP_VERSION=1.0.0
+DEBUG=True
+SECRET_KEY=your_secret_key_here
+
+# Job Processing Settings
+MAX_JOBS_PER_SEARCH=100
+MAX_EMAILS_PER_RUN=5
+SLEEP_BETWEEN_EMAILS=3
+DRY_RUN=True
+
+# Resume Matching Settings
+MIN_MATCH_SCORE=0.7
+MAX_APPLICATIONS_PER_DAY=10
+
+# Scheduling Settings
+JOB_SEARCH_INTERVAL_HOURS=6
+EMAIL_BATCH_INTERVAL_HOURS=24
+
+# Logging
+LOG_LEVEL=INFO
+LOG_FILE=logs/app.log
+
+# Web Interface
+HOST=0.0.0.0
+PORT=8000
+RELOAD=True
+
+# SendGrid Configuration
+SENDGRID_API_KEY=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
+SENDGRID_FROM_EMAIL=swaroop@zindango.com
+SENDGRID_FROM_NAME=Swaroop Kallakuri
+
+
+
+
+# ===== REQUIRED =====
+# Your real SendGrid API key (full key, not truncated)
+SENDGRID_API_KEY=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
+
+# The "From" address you verified in SendGrid (Single Sender or Domain Auth)
+SENDGRID_FROM_EMAIL="bhuvan@em7186.mail.shambu.party"
+SENDGRID_FROM_NAME="bhuvan"
+
+# ===== APP / ROUTING =====
+# If you’re only testing locally (no webhooks), leave this as 127.0.0.1.
+# If you expose the app via Cloudflare Tunnel, set this to your public URL.
+# Example: https://obligations-recipient-description-subscribe.trycloudflare.com
+BASE_URL=http://127.0.0.1:8001
+
+# SQLite path for event storage
+TRACKING_DB_PATH=events.db
+
+# ===== SENDING MODE =====
+# false = actually send; true = sandbox (no delivery, just logs in SendGrid)
+SENDGRID_SANDBOX=false
+
+# ===== EVENT WEBHOOK SIGNATURE VERIFY (optional) =====
+# Turn on only if you enabled "Signed Event Webhook" in SendGrid and pasted the public key below.
+SENDGRID_WEBHOOK_VERIFY=false
+SENDGRID_WEBHOOK_PUBLIC_KEY=""
+
+# ===== INBOUND PARSE (optional) =====
+# If you use SendGrid Inbound Parse, you can protect /inbound with a shared token:
+# Send to:  BASE_URL/inbound?token=YOUR_TOKEN
+INBOUND_SHARED_TOKEN=""
+
+
+# --------------------------------------
+# 📨 IMAP Settings for Reply Tracking
+# --------------------------------------
+IMAP_HOST=imap.zoho.com
+IMAP_USER=replies@shambu.party
+IMAP_PASS=CsTBxnhZAYm8
+IMAP_FOLDER=INBOX
+IMAP_SSL=true
+IMAP_SINCE_DAYS=14
+IMAP_CHECK_TOKEN=secret123
+
+
+REPLY_TO_EMAIL=replies@shambu.party
+
+
+# --------------------------------------
+# Supabase Integration (fill to enable)
+# --------------------------------------
+# Postgres URL (overrides DATABASE_URL when set). Use psycopg2 driver w/ sslmode=require.
+# SUPABASE_POSTGRES_URL placeholder commented to avoid failed connections in local dev & tests.
+# Uncomment and provide real credentials to enable Supabase Postgres.
+# SUPABASE_POSTGRES_URL=postgresql+psycopg2://postgres:YOUR_PASSWORD@db.YOUR_PROJECT_REF.supabase.co:5432/postgres?sslmode=require
+
+# Service Role Key (server only, NEVER expose to frontend)
+SUPABASE_SERVICE_ROLE_KEY=
+
+# Optional base API + anon key (only if frontend uses Supabase JS client later)
+# SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
+SUPABASE_ANON_KEY=
+
+# Storage buckets (create these in Supabase > Storage)
+SUPABASE_STORAGE_BUCKET_DOCS=docs
+SUPABASE_STORAGE_BUCKET_UPLOADS=uploads
+
+# Frontend (Next.js) public vars (if needed later)
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+
+# After filling: restart backend, run migration scripts:
+#   python scripts/migrate_sqlite_to_supabase.py --skip-empty
+#   python scripts/migrate_files_to_supabase.py --verbose
+# Verify: curl -s http://localhost:8011/health | jq .supabase

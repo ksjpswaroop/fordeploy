@@ -1,0 +1,55 @@
+name: recruitment-frontend-web
+services:
+- name: web
+  source_dir: /
+  github:
+    repo: your-username/your-repo-name
+    branch: main
+  dockerfile_path: Dockerfile.frontend
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  http_port: 3000
+  routes:
+  - path: /
+  health_check:
+    http_path: /
+    initial_delay_seconds: 30
+    period_seconds: 10
+    timeout_seconds: 5
+    success_threshold: 1
+    failure_threshold: 3
+  envs:
+  - key: NODE_ENV
+    value: production
+  - key: PORT
+    value: "3000"
+  - key: HOSTNAME
+    value: "0.0.0.0"
+  - key: NEXT_TELEMETRY_DISABLED
+    value: "1"
+  # API Configuration
+  - key: NEXT_PUBLIC_API_URL
+    value: "https://recruitment-backend-api-your-hash.ondigitalocean.app"
+  # Authentication (if using Clerk)
+  - key: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+    value: "your-clerk-publishable-key"
+  # Supabase Configuration (if using)
+  - key: NEXT_PUBLIC_SUPABASE_URL
+    value: "your-supabase-url"
+  - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+    value: "your-supabase-anon-key"
+
+# Optional: Add static site for assets
+# static_sites:
+# - name: assets
+#   source_dir: /public
+#   routes:
+#   - path: /static
+#   catchall_document: index.html
+
+# Optional: Add custom domain
+# domains:
+# - domain: your-domain.com
+#   type: PRIMARY
+# - domain: www.your-domain.com
+#   type: ALIAS
