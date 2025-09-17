@@ -1,0 +1,132 @@
+# Application Configuration
+APP_NAME=AI Driven Recruitment Backend
+APP_VERSION=1.0.0
+ENVIRONMENT=development
+DEBUG=true
+SECRET_KEY=sk-1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+
+# Clerk Authentication Configuration
+
+CLERK_JWT_SECRET="-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmN6RVecv7i3T5SnC0vpi\n1wbk+Pe3fI+41No8lgMPZ/0VU6wq4XuIPArauzkFC723LGU7VSg7rNnq1QJI3Azk\narji3e0nHOQ8X3xGlJmow2s914libvlFAe3ahRU/NbbT6F4R/T34OI/o4pybuiiX\n+LqC2l20tq3DR7pyjn7n7FfJEI/5OZnGYONHA9Sv2HhlTXfMoa5zptWqkgqq3PoK\n4tTxkhcSRNzxgJP7Ner6/giiVzqX/n79aDhccGea2M6vyjFjDQf0Z8Q8h/G3A/6r\n4VAbzDNKN4vo+xOCZsRkPQGyJ7IV0VzUi7AH9nhIRk0QOTZi6B8L12goqbMylLYF\nrwIDAQAB\n-----END PUBLIC KEY-----"
+
+CLERK_PUBLISHABLE_KEY=pk_test_dG9nZXRoZXItbWFudGlzLTc2LmNsZXJrLmFjY291bnRzLmRldiQ
+CLERK_SECRET_KEY=sk_test_OQycXfcNvAfHh63AgV9ylcld8NQnwBXCgnlrZyEh6D
+
+
+DEV_BEARER_TOKEN=dev-123
+# Allowed roles: admin|manager|recruiter|candidate
+DEV_USER_ROLE=manager
+DEV_USER_ID=1
+DEV_USER_EMAIL=dev@example.com
+DEV_TENANT_ID=1
+
+# Database Configuration (SQLite for MVP)
+DATABASE_URL=sqlite:///./recruitment_mvp.db
+
+# Apify Configuration
+APIFY_TOKEN=apify_api_XK5ZNVJS4yF573a6FziuQAAbBc4eqh1G9QMs 
+
+# Data Enrichment APIs
+APOLLO_API_KEY=Kwr0JSR4fjxj10yHnhlguQ
+HUNTER_API_KEY=b1292c23159ad2ade0ed296fc222eba0d43b9cb9
+
+# AI/OpenAI Configuration
+OPENAI_API_KEY=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
+
+# Email Configuration
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password_here
+FROM_NAME=Your Name
+FROM_EMAIL=your_email@gmail.com
+
+# Application Settings
+APP_NAME=Apify Job Automation
+APP_VERSION=1.0.0
+DEBUG=True
+ENVIRONMENT=development
+SECRET_KEY=your_secret_key_here
+
+# Job Processing Settings
+MAX_JOBS_PER_SEARCH=100
+MAX_EMAILS_PER_RUN=5
+SLEEP_BETWEEN_EMAILS=3
+DRY_RUN=True
+
+# Resume Matching Settings
+MIN_MATCH_SCORE=0.7
+MAX_APPLICATIONS_PER_DAY=10
+
+# Scheduling Settings
+JOB_SEARCH_INTERVAL_HOURS=6
+EMAIL_BATCH_INTERVAL_HOURS=24
+
+# Logging
+LOG_LEVEL=INFO
+LOG_FILE=logs/app.log
+
+# Web Interface
+HOST=0.0.0.0
+PORT=8000
+RELOAD=False
+
+# Email Tracker Settings
+EMAIL_TRACKER_PORT=8001
+
+# SendGrid Configuration
+SENDGRID_API_KEY=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
+SENDGRID_FROM_EMAIL=swaroop@zindango.com
+SENDGRID_FROM_NAME=Swaroop Kallakuri
+
+
+
+
+# ===== REQUIRED =====
+# Your real SendGrid API key (full key, not truncated)
+SENDGRID_API_KEY=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
+
+# The "From" address you verified in SendGrid (Single Sender or Domain Auth)
+SENDGRID_FROM_EMAIL="bhuvan@em7186.mail.shambu.party"
+SENDGRID_FROM_NAME="bhuvan"
+
+# ===== APP / ROUTING =====
+# If you're only testing locally (no webhooks), leave this as 127.0.0.1.
+# If you expose the app via Cloudflare Tunnel, set this to your public URL.
+# Example: https://obligations-recipient-description-subscribe.trycloudflare.com
+BASE_URL=http://127.0.0.1:8001
+
+# SQLite path for event storage
+TRACKING_DB_PATH=events.db
+
+# ===== SENDING MODE =====
+# false = actually send; true = sandbox (no delivery, just logs in SendGrid)
+SENDGRID_SANDBOX=false
+
+# ===== EVENT WEBHOOK SIGNATURE VERIFY (optional) =====
+# Turn on only if you enabled "Signed Event Webhook" in SendGrid and pasted the public key below.
+SENDGRID_WEBHOOK_VERIFY=false
+SENDGRID_WEBHOOK_PUBLIC_KEY=""
+
+# ===== INBOUND PARSE (optional) =====
+# If you use SendGrid Inbound Parse, you can protect /inbound with a shared token:
+# Send to:  BASE_URL/inbound?token=YOUR_TOKEN
+INBOUND_SHARED_TOKEN=""
+
+
+# --------------------------------------
+# 📨 IMAP Settings for Reply Tracking
+# --------------------------------------
+IMAP_HOST=imap.zoho.com
+IMAP_USER=replies@shambu.party
+IMAP_PASS=CsTBxnhZAYm8
+IMAP_FOLDER=INBOX
+IMAP_SSL=true
+IMAP_SINCE_DAYS=14
+IMAP_CHECK_TOKEN=secret123
+
+
+REPLY_TO_EMAIL=replies@shambu.party
+
+# Redis Configuration
+REDIS_URL=redis://redis:6379/0

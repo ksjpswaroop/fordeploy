@@ -1,0 +1,17 @@
+services:
+  api:
+    build: .
+    environment:
+      - PORT=8080
+      - ENVIRONMENT=development
+    command: ["sh","-c","./scripts/prestart.sh && uvicorn app.main:app --host 0.0.0.0 --port 8080"]
+    ports:
+      - "8080:8080"
+  web:
+    build: ./frontend
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:8080/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api

@@ -1,0 +1,47 @@
+[tool.pytest.ini_options]
+addopts = "-q --maxfail=1 --disable-warnings --cov=app --cov-report=term-missing --cov-fail-under=90"
+pythonpath = ["."]
+
+[tool.coverage.run]
+branch = true
+source = ["app"]
+
+[tool.coverage.report]
+omeasure_branch = true
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == \"__main__\":",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+# Keep linting focused on the app codebase; don't exclude all *.py
+exclude = [
+    "migrations",
+    ".venv",
+    "archive",
+    "tests",
+    # Legacy/unused API modules not part of MVP scope
+    "app/api/dependencies.py",
+    "app/api/job_pipeline_api.py",
+    "app/api/pipeline_api.py",
+    "app/api/routes",
+]
+
+[tool.ruff.lint]
+select = ["E", "F"]
+ignore = ["E501"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+exclude = "migrations|.venv"
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+strict_optional = false
+exclude = "migrations|.venv"
